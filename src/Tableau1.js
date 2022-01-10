@@ -10,13 +10,13 @@ class Tableau1 extends Phaser.Scene{
         this.hauteur = 500
         this.largeur = 1000
 
-        let haut = this.add.image(0,0, 'carre').setOrigin(0,0);
+        this.haut = this.physics.add.image(0,0, 'carre').setOrigin(0,0);
         haut.setDisplaySize(this.largeur,20)
 
-        let bas = this.add.image(0,480, 'carre').setOrigin(0,0);
+        this.bas = this.physics.add.image(0,480, 'carre').setOrigin(0,0);
         bas.setDisplaySize(this.largeur,20)
 
-        let balle = this.add.image(480,230,'cercle').setOrigin(0,0);
+        this.balle = this.physics.add.image(480,230,'cercle').setOrigin(0,0);
         balle.setDisplaySize(20,20)
     }
 
