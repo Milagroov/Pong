@@ -63,8 +63,8 @@ class Tableau1 extends Phaser.Scene{
         this.player1Speed = 0
         this.player2Speed = 0
 
-        this.joueurGauche = new Joueur('A','joueurGauche')
-        this.joueurDroite = new Joueur('B','joueurDroite')
+        this.joueurGauche = new Joueur('Joueur1','joueurGauche')
+        this.joueurDroite = new Joueur('Joueur2','joueurDroite')
         console.log(this.joueurGauche)
 
         this.balleAucentre();
