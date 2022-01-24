@@ -3,8 +3,7 @@ class Tableau1 extends Phaser.Scene{
     preload() {
         this.load.image('square','assets/carre.png');
         this.load.image('circle','assets/cercle.png');
-        this.load.image('blue','assets/bleu.jpg');
-        this.load.image('pink','assets/rose.jpg');
+
     }
 
 
@@ -32,10 +31,10 @@ class Tableau1 extends Phaser.Scene{
         this.bas.setDisplaySize(this.largeur, 20)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
-        this.player1 = this.physics.add.sprite(50, 360, 'blue')
+        this.player1 = this.physics.add.sprite(50, 360, 'square')
         this.player1.setDisplaySize(20, 100)
         this.player1.body.setAllowGravity(false)
-        this.player2 = this.physics.add.sprite(920, 360, 'pink')
+        this.player2 = this.physics.add.sprite(920, 360, 'square')
         this.player2.setDisplaySize(20, 100)
         this.player2.body.setAllowGravity(false)
         this.player1.setImmovable(true)
@@ -64,8 +63,8 @@ class Tableau1 extends Phaser.Scene{
         this.player1Speed = 0
         this.player2Speed = 0
 
-        this.joueurGauche = new Joueur('Joueur 1','joueurGauche')
-        this.joueurDroite = new Joueur('Joueur 2','joueurDroite')
+        this.joueurGauche = new Joueur('A','joueurGauche')
+        this.joueurDroite = new Joueur('B','joueurDroite')
         console.log(this.joueurGauche)
 
         this.balleAucentre();
