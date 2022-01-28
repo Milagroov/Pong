@@ -5,7 +5,7 @@ class Tableau1 extends Phaser.Scene{
         this.load.image('flamecircle','assets/flamecircle.png');
         this.load.image('colorsquare','assets/colorsquare.png');
         this.load.image('fond','assets/background.jpg');
-        this.load.image('raquette','assets/raquette.png');
+        this.load.image('raquette','assets/raquette.jpg');
     }
 
 
@@ -37,11 +37,11 @@ class Tableau1 extends Phaser.Scene{
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
 
-        this.player1 = this.physics.add.sprite(50, 360, 'colorsquare')
+        this.player1 = this.physics.add.sprite(50, 360, 'raquette')
         this.player1.setDisplaySize(20, 100)
         this.player1.body.setAllowGravity(false)
 
-        this.player2 = this.physics.add.sprite(920, 360, 'colorsquare')
+        this.player2 = this.physics.add.sprite(920, 360, 'raquette')
         this.player2.setDisplaySize(20, 100)
         this.player2.body.setAllowGravity(false)
 

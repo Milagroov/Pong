@@ -40,11 +40,19 @@ canvas{
 }
 
 .score{
-    color:#0f0
+    color: white;
 }
 .name{
     font-size: 3vw;
 }
+
+#joueurGauche{
+    color: #904839;
+}
+#joueurDroite{
+    color: #904839;
+}
+
 
 #scores >* {
     margin: 1vw;
