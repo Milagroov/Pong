@@ -1,13 +1,17 @@
 class Tableau1 extends Phaser.Scene{
 
     preload() {
-        this.load.image('square','assets/carre.png');
-        this.load.image('circle','assets/cercle.png');
-
+        this.load.image('particle','assets/particle.png');
+        this.load.image('flamecircle','assets/flamecircle.png');
+        this.load.image('colorsquare','assets/colorsquare.png');
+        this.load.image('fond','assets/background.jpg');
+        this.load.image('raquette','assets/raquette.png');
     }
 
 
     create(){
+
+        this.bg = this.add.image(0, 0, 'fond').setOrigin(0, 0);
 
         this.hauteur = 500
         this.largeur = 1000
@@ -18,28 +22,33 @@ class Tableau1 extends Phaser.Scene{
         this.speedY = Phaser.Math.Between(-500, 500)
         this.maxspeed = 500
 
-        this.balle = this.physics.add.sprite(this.largeur/2, this.hauteur/2, 'circle')
+        this.balle = this.physics.add.sprite(this.largeur/2, this.hauteur/2, 'flamecircle')
         this.balle.setDisplaySize(20, 20)
         this.balle.body.setBounce(1,1);
         this.balle.body.setAllowGravity(false)
 
-        this.haut = this.physics.add.sprite(0, 0, 'square').setOrigin(0, 0)
+        this.haut = this.physics.add.sprite(0, 0, 'colorsquare').setOrigin(0, 0)
         this.haut.setDisplaySize(this.largeur, 20)
         this.haut.body.setAllowGravity(false)
         this.haut.setImmovable(true);
-        this.bas = this.physics.add.sprite(0, 480, 'square').setOrigin(0, 0)
+
+        this.bas = this.physics.add.sprite(0, 480, 'colorsquare').setOrigin(0, 0)
         this.bas.setDisplaySize(this.largeur, 20)
         this.bas.body.setAllowGravity(false)
         this.bas.setImmovable(true);
-        this.player1 = this.physics.add.sprite(50, 360, 'square')
+
+        this.player1 = this.physics.add.sprite(50, 360, 'colorsquare')
         this.player1.setDisplaySize(20, 100)
         this.player1.body.setAllowGravity(false)
-        this.player2 = this.physics.add.sprite(920, 360, 'square')
+
+        this.player2 = this.physics.add.sprite(920, 360, 'colorsquare')
         this.player2.setDisplaySize(20, 100)
         this.player2.body.setAllowGravity(false)
+
         this.player1.setImmovable(true)
         this.player2.setImmovable(true)
         let me = this;
+
         this.physics.add.collider(this.player1, this.balle,function(){
             console.log('touche player 1')
             me.rebond(me.player1)
@@ -60,11 +69,21 @@ class Tableau1 extends Phaser.Scene{
         this.physics.add.collider(this.haut, this.player2)
         this.physics.add.collider(this.bas, this.player2)
 
+        let particles = this.add.particles('particle');
+
+        let emitter = particles.createEmitter({
+            speed: 120,
+            scale: { start: 0.03, end: 0.00 },
+            blendMode: 'ADD'
+        });
+        emitter.startFollow(this.balle);
+
+
         this.player1Speed = 0
         this.player2Speed = 0
 
-        this.joueurGauche = new Joueur('Joueur1','joueurGauche')
-        this.joueurDroite = new Joueur('Joueur2','joueurDroite')
+        this.joueurGauche = new Joueur('Joueur 1','joueurGauche')
+        this.joueurDroite = new Joueur('Joueur 2','joueurDroite')
         console.log(this.joueurGauche)
 
         this.balleAucentre();
